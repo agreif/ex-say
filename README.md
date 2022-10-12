@@ -2,7 +2,7 @@
 
 Text-to-Speech module for Elixir.
 
-It exposes a function 'Say.say/1' that tells the underlying OS to say the given text.
+It exposes a function `Say.say/1` that tells the underlying OS or through a SSH tunnel to say the given text.
 
 # Usage
 
@@ -12,6 +12,7 @@ Import Say
 def say_hello() do
     say("hello")
 end
+```
 
 # Configuration
 
