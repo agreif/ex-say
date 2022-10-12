@@ -18,7 +18,13 @@ defmodule Say.MixProject do
         links: %{
           "GitHub" => @source_url,
         },
-      ]
+      ],
+      docs: [
+        main: "Say",
+        source_url: @source_url,
+        source_ref: "v#{@version}",
+        extras: ["CHANGELOG.md"]
+      ],
     ]
   end
 
@@ -32,6 +38,7 @@ defmodule Say.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]
