@@ -4,7 +4,7 @@ Text-to-Speech module for Elixir.
 
 It exposes a function `Say.say/1` that tells the underlying OS or through a SSH tunnel to say the given text.
 
-# Usage
+## Usage
 
 ```
 Import Say
@@ -14,17 +14,17 @@ def say_hello() do
 end
 ```
 
-# Configuration
+## Configuration
 
 In the file 'project/config/config.exs'
 
-## Say via function
+### Say via function
 ```
 config :say,
   :func, &IO.inspect/1
 ```
 
-## Say directly with OS fatures
+### Say directly with OS fatures
 ```
 config :say,
   exec: "say",
@@ -34,7 +34,7 @@ On the Mac the executable 'say' can be used directly.
 
 On Linux I haven't tried, but these should work [command-line-text-speech-apps-linux](https://linuxhint.com/command-line-text-speech-apps-linux/)
 
-# Say via SSH tunnel
+### Say via SSH tunnel
 ```
 config :say,
   exec: "say",
@@ -57,4 +57,3 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/say>.
-
