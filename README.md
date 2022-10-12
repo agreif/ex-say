@@ -43,6 +43,17 @@ config :say,
 
 ## Installation
 
+```elixir
+def deps do
+  [
+    {:say, git: "https://github.com/agreif/ex-say.git"}
+  ]
+end
+```
+
+
+### Future Task
+
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 by adding `say` to your list of dependencies in `mix.exs`:
 
