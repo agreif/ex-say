@@ -16,7 +16,7 @@ end
 
 # Configuration
 
-In the file 'project/config/config'...
+In the file 'project/config/config.exs'
 
 ## Say via function
 ```
@@ -31,12 +31,12 @@ config :say,
 ```
 
 On the Mac the executable 'say' can be used directly.
+
 On Linux I haven't tried, but these should work [command-line-text-speech-apps-linux](https://linuxhint.com/command-line-text-speech-apps-linux/)
 
 # Say via SSH tunnel
 ```
 config :say,
-  :func, &IO.inspect/1
   exec: "say",
   ssh_args: ~w(-p 2209 localhost)
 ```
