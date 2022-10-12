@@ -1,13 +1,24 @@
 defmodule Say.MixProject do
   use Mix.Project
 
+  @version "0.1.0"
+  @source_url "https://github.com/agreif/ex-say"
+
   def project do
     [
       app: :say,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      description: "Text-to-Speech module for Elixir. It exposes a function Say.say/1 that advises the underlying OS or through a SSH tunnel to say the given text.",
+      source_url: @source_url,
+      package: [
+        licenses: ["MIT"],
+        links: %{
+          "GitHub" => @source_url,
+        },
+      ]
     ]
   end
 
