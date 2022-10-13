@@ -81,6 +81,28 @@ defmodule SayTest do
     end
   end
 
+  test "say raises error with func=nil, exec!=nil, exec_args=nil, ssh_args=nil but text is nil" do
+    Application.put_env(:say, :test, true)
+    Application.put_env(:say, :func, nil)
+    Application.put_env(:say, :exec, "say")
+    Application.put_env(:say, :exec_args, nil)
+    Application.put_env(:say, :ssh_args, nil)
+    assert_raise FunctionClauseError, fn ->
+      Say.say(nil)
+    end
+  end
+
+  test "say raises error with func=nil, exec!=nil, exec_args=nil, ssh_args=nil but text is not a binary" do
+    Application.put_env(:say, :test, true)
+    Application.put_env(:say, :func, nil)
+    Application.put_env(:say, :exec, "say")
+    Application.put_env(:say, :exec_args, nil)
+    Application.put_env(:say, :ssh_args, nil)
+    assert_raise FunctionClauseError, fn ->
+      Say.say(["aaa"])
+    end
+  end
+
   test "say with func!=nil, exec=nil, exec_args=nil, ssh_args=nil" do
     Application.put_env(:say, :test, true)
     Application.put_env(:say, :func, &Function.identity/1)
