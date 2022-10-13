@@ -59,6 +59,10 @@ defmodule Say do
   Returns a tuple containing :ok or :error, the collected result
   and the command exit status.
 
+  * Throws an `ArgumentError` if `:exec_args` or `:ssh_args` exist but are not a list of binaries
+    and `:exec` exists but is not a binary.
+  * Throws an `ArgumentError` if `text` is not a binary.
+
   ## Examples
 
       iex> Say.say("hello")
