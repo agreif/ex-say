@@ -2,6 +2,18 @@ defmodule Say do
   @moduledoc """
   Lets the System say a given text via text-to-speech.
 
+  ## Usage
+
+      Import Say
+
+      def foo() do
+        if func() do
+          say("success")
+        else
+          say("error in foo")
+        end
+      end
+
   ## Configuration (How to say something)
 
   You can configure the way how to say something...

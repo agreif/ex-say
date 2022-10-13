@@ -15,8 +15,12 @@ One concrete sample is when RiotJS markup files has to be compiled to JavaScript
 ```
 Import Say
 
-def say_hello() do
-    say("hello")
+def foo() do
+  if func() do
+    say("success")
+  else
+    say("error in foo")
+  end
 end
 ```
 
