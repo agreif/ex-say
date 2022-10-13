@@ -62,6 +62,7 @@ defmodule Say do
   ## Examples
 
       iex> Say.say("hello")
+      {:ok, "hello", 0}
 
   """
   @spec say(binary) :: {:ok | :error, Collectable.t(), exit_status :: non_neg_integer}
