@@ -4,6 +4,12 @@ Text-to-Speech module for Elixir.
 
 It exposes a function `Say.say/1` that tells the underlying OS or through a SSH tunnel to say the given text.
 
+## Why?
+
+While programming I found it very useful to get acustic feedback from some background jobs which execute elixir code.
+
+One concrete sample is when RiotJS mrkup files has to be compiled to JavaScript. This watch-compile-loop is implemented with elixir, and when a compile fails, my laptop says "riot compile error".
+
 ## Usage
 
 ```
@@ -43,18 +49,7 @@ config :say,
 
 ## Installation
 
-```elixir
-def deps do
-  [
-    {:say, git: "https://github.com/agreif/ex-say.git"}
-  ]
-end
-```
-
-### Future Task
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `say` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `say` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -64,6 +59,6 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/say>.
+## Documentation
+
+The docs can be found at <https://hexdocs.pm/say>.
