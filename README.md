@@ -8,7 +8,7 @@ It exposes a function `Say.say/1` that tells the underlying OS or through a SSH 
 
 While programming I found it very useful to get acustic feedback from some background jobs which execute elixir code.
 
-One concrete sample is when RiotJS mrkup files has to be compiled to JavaScript. This watch-compile-loop is implemented with elixir, and when a compile fails, my laptop says "riot compile error".
+One concrete sample is when RiotJS markup files has to be compiled to JavaScript. This watch-compile-loop is implemented with elixir, and when a compile fails, my laptop says "riot compile error".
 
 ## Usage
 
