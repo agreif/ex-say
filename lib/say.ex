@@ -18,7 +18,7 @@ defmodule Say do
 
       config :say,
          exec: "say"
-         exec_args: "-v somevoice"
+         exec_args: ~w(-v somevoice)"
 
   via shell command over an SSH tunnel:
 
@@ -28,7 +28,7 @@ defmodule Say do
 
       config :say,
          exec: "say",
-         exec_args: "-v somevoice"
+         exec_args: ~w(-v somevoice)
          ssh_args: ~w(-p 2222 localhost)
 
   ## OS specialities
