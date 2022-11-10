@@ -2,6 +2,12 @@ defmodule Say do
   @moduledoc """
   Lets the System say a given text via text-to-speech.
 
+  ## Why?
+
+  While programming I found it very useful to get acustic feedback from some background jobs which execute elixir code.
+
+  One concrete sample is when RiotJS markup files has to be compiled to JavaScript. This watch-compile-loop is implemented with elixir, and when a compile fails, my laptop says "riot compile error".
+
   ## Usage
 
       Import Say
@@ -42,6 +48,20 @@ defmodule Say do
          exec: "say",
          exec_args: ~w(-v somevoice)
          ssh_args: ~w(-p 2222 localhost)
+
+  ## SSH-Tunneling Use-Cases
+
+  ### Setup a reverse tunnel into a local VM
+
+  If working on a Mac or Linux with text-to-speech and the Elixir app is inside a VM you can set a reverse tunnel from the VM host inside the VM guest over the VM_PORT, so that the upper config works:
+
+      my-mac $ ssh -p VM_PORT -NTR 2222:localhost:22 localhost
+
+  ### Setup a local tunnel into another Mac/Linux
+
+  If your Elixir development environment has no text-to-speech and you have access to a Mac or Linux box with text-to-speech, then you can setup a tunnel to the other Mac/Linux with
+
+      my-elixir $ ssh -NTL 2222:localhost:22 my-mac
 
   ## OS specialities
 
