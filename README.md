@@ -62,7 +62,7 @@ The package can be installed by adding `say` to your list of dependencies in `mi
 ```elixir
 def deps do
   [
-    {:say, "~> 0.1.0"}
+    {:say, "~> 0.2.1"}
   ]
 end
 ```
