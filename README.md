@@ -4,6 +4,10 @@ Text-to-Speech module for Elixir.
 
 It exposes a function `Say.say/1` that tells the underlying OS or through a SSH tunnel to say the given text.
 
+## HexDocs
+
+The Elixir Module can be found at <https://hexdocs.pm/say>.
+
 ## Why?
 
 While programming I found it very useful to get acustic feedback from some background jobs which execute elixir code.
@@ -63,6 +67,3 @@ def deps do
 end
 ```
 
-## Documentation
-
-The docs can be found at <https://hexdocs.pm/say>.
