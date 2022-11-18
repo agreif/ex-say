@@ -14,6 +14,12 @@ While programming I found it very useful to get acustic feedback from some backg
 
 One concrete sample is when RiotJS markup files has to be compiled to JavaScript. This watch-compile-loop is implemented with elixir, and when a compile fails, my laptop says "riot compile error".
 
+## Slides from the November Berlin Elixir Meetup
+
+![](images/say1.png)
+![](images/say2.png)
+![](images/say3.png)
+
 ## Usage
 
 ```
