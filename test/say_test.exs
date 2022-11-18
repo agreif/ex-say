@@ -10,6 +10,7 @@ defmodule SayTest do
     Application.put_env(:say, :exec, nil)
     Application.put_env(:say, :exec_args, nil)
     Application.put_env(:say, :ssh_args, nil)
+
     assert_raise ArgumentError, @config_error_msg, fn ->
       Say.say("foo")
     end
@@ -21,6 +22,7 @@ defmodule SayTest do
     Application.put_env(:say, :exec, "say")
     Application.put_env(:say, :exec_args, nil)
     Application.put_env(:say, :ssh_args, nil)
+
     assert_raise ArgumentError, @config_error_msg, fn ->
       Say.say("foo")
     end
@@ -32,6 +34,7 @@ defmodule SayTest do
     Application.put_env(:say, :exec, nil)
     Application.put_env(:say, :exec_args, nil)
     Application.put_env(:say, :ssh_args, ~w(-p 2222))
+
     assert_raise ArgumentError, @config_error_msg, fn ->
       Say.say("foo")
     end
@@ -43,6 +46,7 @@ defmodule SayTest do
     Application.put_env(:say, :exec, nil)
     Application.put_env(:say, :exec_args, nil)
     Application.put_env(:say, :ssh_args, ~w(-p 2222 localhost))
+
     assert_raise ArgumentError, @config_error_msg, fn ->
       Say.say("foo")
     end
@@ -54,6 +58,7 @@ defmodule SayTest do
     Application.put_env(:say, :exec, "say")
     Application.put_env(:say, :exec_args, "-v somevoice")
     Application.put_env(:say, :ssh_args, nil)
+
     assert_raise ArgumentError, "exec_args must be a list of binaries", fn ->
       Say.say("foo")
     end
@@ -65,6 +70,7 @@ defmodule SayTest do
     Application.put_env(:say, :exec, "say")
     Application.put_env(:say, :exec_args, nil)
     Application.put_env(:say, :ssh_args, "-p 2222 localhost")
+
     assert_raise ArgumentError, "ssh_args must be a list of binaries", fn ->
       Say.say("foo")
     end
@@ -76,6 +82,7 @@ defmodule SayTest do
     Application.put_env(:say, :exec, 123)
     Application.put_env(:say, :exec_args, nil)
     Application.put_env(:say, :ssh_args, nil)
+
     assert_raise ArgumentError, "exec must be a binary", fn ->
       Say.say("foo")
     end
@@ -87,6 +94,7 @@ defmodule SayTest do
     Application.put_env(:say, :exec, "say")
     Application.put_env(:say, :exec_args, nil)
     Application.put_env(:say, :ssh_args, nil)
+
     assert_raise FunctionClauseError, fn ->
       Say.say(nil)
     end
@@ -98,6 +106,7 @@ defmodule SayTest do
     Application.put_env(:say, :exec, "say")
     Application.put_env(:say, :exec_args, nil)
     Application.put_env(:say, :ssh_args, nil)
+
     assert_raise FunctionClauseError, fn ->
       Say.say(["aaa"])
     end
@@ -147,5 +156,4 @@ defmodule SayTest do
     Application.put_env(:say, :ssh_args, ~w(-p 2222 localhost))
     assert Say.say("foo") == {"ssh", ["-p", "2222", "localhost", "say", "-v", "somevoice", "foo"]}
   end
-
 end

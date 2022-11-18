@@ -96,40 +96,50 @@ defmodule Say do
     exec_args = Application.get_env(:say, :exec_args)
     ssh_args = Application.get_env(:say, :ssh_args)
 
-    if exec && !is_binary(exec), do: raise ArgumentError, "exec must be a binary"
+    if exec && !is_binary(exec), do: raise(ArgumentError, "exec must be a binary")
+
     if exec_args do
-      if !is_list(exec_args), do: raise ArgumentError, "exec_args must be a list of binaries"
-      unless Enum.all?(exec_args, &is_binary/1), do: raise ArgumentError, "all exec_args must be binaries"
+      if !is_list(exec_args), do: raise(ArgumentError, "exec_args must be a list of binaries")
+
+      unless Enum.all?(exec_args, &is_binary/1),
+        do: raise(ArgumentError, "all exec_args must be binaries")
     end
+
     if ssh_args do
-      if !is_list(ssh_args), do: raise ArgumentError, "ssh_args must be a list of binaries"
-      unless Enum.all?(ssh_args, &is_binary/1), do: raise ArgumentError, "all ssh_args must be binaries"
+      if !is_list(ssh_args), do: raise(ArgumentError, "ssh_args must be a list of binaries")
+
+      unless Enum.all?(ssh_args, &is_binary/1),
+        do: raise(ArgumentError, "all ssh_args must be binaries")
     end
 
     do_say(text, func, exec, exec_args, ssh_args)
   end
 
-  defp do_say(text, func, exec, _exec_args, ssh_args) when func != nil and exec == nil and ssh_args == nil do
+  defp do_say(text, func, exec, _exec_args, ssh_args)
+       when func != nil and exec == nil and ssh_args == nil do
     result = func.(text)
     {:ok, result, 0}
   end
 
-  defp do_say(text, func, exec, exec_args, ssh_args) when func == nil and exec != nil and exec_args != nil and ssh_args == nil do
+  defp do_say(text, func, exec, exec_args, ssh_args)
+       when func == nil and exec != nil and exec_args != nil and ssh_args == nil do
     cmd = exec
-    args = exec_args ++ [text] |> Enum.reject(&is_nil/1)
+    args = (exec_args ++ [text]) |> Enum.reject(&is_nil/1)
     do_system_cmd(cmd, args)
   end
 
-  defp do_say(text, func, exec, exec_args, ssh_args) when func == nil and exec != nil and exec_args == nil and ssh_args == nil do
+  defp do_say(text, func, exec, exec_args, ssh_args)
+       when func == nil and exec != nil and exec_args == nil and ssh_args == nil do
     cmd = exec
     args = [text]
     do_system_cmd(cmd, args)
   end
 
-  defp do_say(text, func, exec, exec_args, ssh_args) when func == nil and exec != nil and ssh_args != nil do
+  defp do_say(text, func, exec, exec_args, ssh_args)
+       when func == nil and exec != nil and ssh_args != nil do
     cmd = "ssh"
     exec_args = if exec_args != nil, do: exec_args, else: []
-    args = ssh_args ++ [exec] ++ exec_args ++ [text] |> Enum.reject(&is_nil/1)
+    args = (ssh_args ++ [exec] ++ exec_args ++ [text]) |> Enum.reject(&is_nil/1)
     do_system_cmd(cmd, args)
   end
 
@@ -142,11 +152,11 @@ defmodule Say do
       {cmd, args}
     else
       {result, exit_code} = System.cmd(cmd, args)
+
       case exit_code do
         0 -> {:ok, result, 0}
         e -> {:error, result, e}
       end
     end
   end
-
 end
